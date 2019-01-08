@@ -1,4 +1,10 @@
 # avphp
+一直没用PHP编写过,也没有用过数据库,这次个人爱好,慢慢摸索搞了个PHP+MYSQL.数据库里放的是AV数据,数据根据硬盘上的番号图片+硬盘,
+根据PHP脚本自动添加数据到数据库,然后进行显示观看.
+用户当然要注册才可以查看.
+纯粹是个人爱好,用了HTTPS,保证安全,用cookie,token等保证网站安全.
+这个主要还是要AV的内容,如果内容不全,数据里里是没有数据的,本来用了8个硬盘的数据,图片+电影.
+
 网站有域名,域名采用TSL加密,TSL 有https://freessl.org/申请的Let's Encrypt提供加密服务
 网站平台有APACHE+PHP+MYSQL搭建.
 APACHE+PHP+MYSQL是有XAMPP打包下载的.
