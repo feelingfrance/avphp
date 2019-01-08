@@ -1,0 +1,95 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>身份证信息查询</title>
+</head>
+<body>
+<p style=text-align:center>身份证信息查询</p>
+</body>
+</html>
+
+姓名: <input type="text" id="name">
+身份证: <input type="text" id="sid">
+性别M/F: <input type="text" id="gender">
+地址: <input type="text" id="addr">
+手机: <input type="text" id="mobile">
+电话: <input type="text" id="phone">
+邮箱: <input type="text" id="email">
+    <script type="text/javascript" language="javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" language="javascript">
+		function fun(n) {
+		
+			var info = {
+				name:$("#name").val(),
+				sid:$("#sid").val(),
+				gender:$("#gender").val(),
+				addr:$("#addr").val(),
+				mobile:$("#mobile").val(),
+				phone:$("#phone").val(),
+				email:$("#email").val(),
+			};
+
+			
+			
+			$.ajax({
+				url:"sqlsrv.php", 			
+				type: "POST", 				
+				data:info,
+				beforeSend: function(){
+					$("#view").html("");
+					$("#btn1").attr({ disabled: "disabled" });
+					$("#loading").show();
+			
+				},
+				success:function(result){
+					$("#view").html(result);
+
+				},
+				complete: function(){
+					$("#btn1").removeAttr("disabled");
+					$("#loading").hide();
+					
+				}
+			});
+		}
+		function rand(n) {
+		
+			var info = {
+				rand:"rand",
+
+			};
+
+			
+			
+			$.ajax({
+				url:"sqlsrv.php", 			
+				type: "POST", 				
+				data:info,
+				beforeSend: function(){
+					$("#view").html("");
+					$("#btn1").attr({ disabled: "disabled" });
+					$("#loading").show();
+			
+				},
+				success:function(result){
+					$("#view").html(result);
+
+				},
+				complete: function(){
+					$("#btn1").removeAttr("disabled");
+					$("#loading").hide();
+					
+				}
+			});
+		}
+
+	</script>
+	<div>
+		<button type="button" class="btn" id="btn1" onclick="fun(this)">提交</button>
+	</div>
+	<div>
+		<button type="button" class="btn" id="rand" onclick="rand(this)">随机</button>
+	</div>
+	
+	<p id="view"></p>
+	<p id="loading" style="display:none">加载中,请等待...</p>
